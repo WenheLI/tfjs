@@ -181,6 +181,16 @@ tfjs_cc_library(
 )
 
 tfjs_cc_library(
+    name = "elu_impl",
+    srcs = ["elu_impl.cc"],
+    hdrs = ["elu_impl.h"],
+    deps = [
+        ":backend",
+        ":util",
+    ],
+)
+
+tfjs_cc_library(
     name = "transpose_impl",
     srcs = ["transpose_impl.cc"],
     hdrs = ["transpose_impl.h"],
@@ -225,6 +235,7 @@ tfjs_cc_library(
         ":DepthwiseConv2dNative",
         ":Equal",
         ":Exp",
+        ":Elu",
         ":FlipLeftRight",
         ":FloorDiv",
         ":FusedBatchNorm",
@@ -491,6 +502,17 @@ tfjs_cc_library(
     deps = [
         ":binary",
         ":util",
+    ],
+)
+
+tfjs_cc_library(
+    name = "Elu",
+    srcs = ["kernels/Elu.cc"],
+    hdrs = ["kernels/Elu.h"],
+    deps = [
+        ":backend",
+        ":elu_impl",
+        ":util"
     ],
 )
 

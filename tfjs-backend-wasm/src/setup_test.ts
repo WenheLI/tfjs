@@ -413,6 +413,13 @@ const TEST_FILTERS: TestFilter[] = [
       'ignores NaNs'  // Doesn't yet ignore NaN
     ]
   },
+  {
+    include: 'elu',
+    excludes: [
+      'derivative',  // gradient function not found.
+      'gradient'     // gradient function not found.
+    ]
+  },
 ];
 
 const customInclude = (testName: string) => {
